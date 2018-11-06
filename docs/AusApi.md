@@ -4,7 +4,7 @@ All URIs are relative to *https://laaws.lockss.org:443*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_au_config**](AusApi.md#delete_au_config) | **DELETE** /aus/{auid} | Delete the the configuration of an AU
+[**delete_au_config**](AusApi.md#delete_au_config) | **DELETE** /aus/{auid} | Delete the configuration of an AU
 [**get_all_au_config**](AusApi.md#get_all_au_config) | **GET** /aus | Get the configurations of all AUs
 [**get_au_config**](AusApi.md#get_au_config) | **GET** /aus/{auid} | Get the configuration of an AU
 [**put_au_config**](AusApi.md#put_au_config) | **PUT** /aus/{auid} | Store the configuration of an AU
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 # **delete_au_config**
 > ConfigExchange delete_au_config(auid)
 
-Delete the the configuration of an AU
+Delete the configuration of an AU
 
 Delete the configuration of an AU given the AU identifier
 
@@ -35,7 +35,7 @@ api_instance = lockss_configuration.AusApi(lockss_configuration.ApiClient(config
 auid = 'auid_example' # str | The identifier of the AU for which the configuration is\\ \\ to be deleted
 
 try:
-    # Delete the the configuration of an AU
+    # Delete the configuration of an AU
     api_response = api_instance.delete_au_config(auid)
     pprint(api_response)
 except ApiException as e:
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -107,7 +107,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

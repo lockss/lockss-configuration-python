@@ -32,7 +32,7 @@ class TestAusApi(unittest.TestCase):
     def test_delete_au_config(self):
         """Test case for delete_au_config
 
-        Delete the the configuration of an AU  # noqa: E501
+        Delete the configuration of an AU  # noqa: E501
         """
         pass
 

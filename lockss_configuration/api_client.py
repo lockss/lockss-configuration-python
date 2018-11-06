@@ -24,7 +24,7 @@ import six
 from six.moves.urllib.parse import quote
 
 from lockss_configuration.configuration import Configuration
-import lockss_configuration.lockss-configuration-python
+import lockss_configuration.models
 from lockss_configuration import rest
 
 
@@ -258,7 +258,7 @@ class ApiClient(object):
             if klass in self.NATIVE_TYPES_MAPPING:
                 klass = self.NATIVE_TYPES_MAPPING[klass]
             else:
-                klass = getattr(lockss_configuration.lockss-configuration-python, klass)
+                klass = getattr(lockss_configuration.models, klass)
 
         if klass in self.PRIMITIVE_TYPES:
             return self.__deserialize_primitive(data, klass)

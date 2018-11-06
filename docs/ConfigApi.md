@@ -56,7 +56,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -105,13 +105,13 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_section_config**
-> get_section_config(section_name)
+> file get_section_config(section_name, accept, if_match=if_match, if_modified_since=if_modified_since, if_none_match=if_none_match, if_unmodified_since=if_unmodified_since)
 
 Get the named configuration file
 
@@ -133,10 +133,16 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = lockss_configuration.ConfigApi(lockss_configuration.ApiClient(configuration))
 section_name = 'section_name_example' # str | The name of the section for which the configuration file\\ \\ is requested
+accept = 'accept_example' # str | The Accept header
+if_match = 'if_match_example' # str | The If-Match header (optional)
+if_modified_since = 'if_modified_since_example' # str | The If-Match header (optional)
+if_none_match = 'if_none_match_example' # str | The If-Match header (optional)
+if_unmodified_since = 'if_unmodified_since_example' # str | The If-Match header (optional)
 
 try:
     # Get the named configuration file
-    api_instance.get_section_config(section_name)
+    api_response = api_instance.get_section_config(section_name, accept, if_match=if_match, if_modified_since=if_modified_since, if_none_match=if_none_match, if_unmodified_since=if_unmodified_since)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigApi->get_section_config: %s\n" % e)
 ```
@@ -146,10 +152,15 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **section_name** | **str**| The name of the section for which the configuration file\\ \\ is requested | 
+ **accept** | **str**| The Accept header | 
+ **if_match** | **str**| The If-Match header | [optional] 
+ **if_modified_since** | **str**| The If-Match header | [optional] 
+ **if_none_match** | **str**| The If-Match header | [optional] 
+ **if_unmodified_since** | **str**| The If-Match header | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**file**](file.md)
 
 ### Authorization
 
@@ -157,13 +168,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_url_config**
-> get_url_config(url)
+> file get_url_config(url, accept, if_match=if_match, if_modified_since=if_modified_since, if_none_match=if_none_match, if_unmodified_since=if_unmodified_since)
 
 Get the configuration file for a URL
 
@@ -185,10 +196,16 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = lockss_configuration.ConfigApi(lockss_configuration.ApiClient(configuration))
 url = 'url_example' # str | The URL for which the configuration is requested
+accept = 'accept_example' # str | The Accept header
+if_match = 'if_match_example' # str | The If-Match header (optional)
+if_modified_since = 'if_modified_since_example' # str | The If-Match header (optional)
+if_none_match = 'if_none_match_example' # str | The If-Match header (optional)
+if_unmodified_since = 'if_unmodified_since_example' # str | The If-Match header (optional)
 
 try:
     # Get the configuration file for a URL
-    api_instance.get_url_config(url)
+    api_response = api_instance.get_url_config(url, accept, if_match=if_match, if_modified_since=if_modified_since, if_none_match=if_none_match, if_unmodified_since=if_unmodified_since)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigApi->get_url_config: %s\n" % e)
 ```
@@ -198,10 +215,15 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **url** | **str**| The URL for which the configuration is requested | 
+ **accept** | **str**| The Accept header | 
+ **if_match** | **str**| The If-Match header | [optional] 
+ **if_modified_since** | **str**| The If-Match header | [optional] 
+ **if_none_match** | **str**| The If-Match header | [optional] 
+ **if_unmodified_since** | **str**| The If-Match header | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**file**](file.md)
 
 ### Authorization
 
@@ -209,13 +231,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: multipart/form-data
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_config**
-> put_config(section_name, config_file)
+> put_config(section_name, config_file, if_match=if_match, if_modified_since=if_modified_since, if_none_match=if_none_match, if_unmodified_since=if_unmodified_since)
 
 Store the named configuration file
 
@@ -237,11 +259,15 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = lockss_configuration.ConfigApi(lockss_configuration.ApiClient(configuration))
 section_name = 'section_name_example' # str | The name of the section for which the configuration file\\ \\ is to be stored
-config_file = lockss_configuration.null() #  | The configuration file to be stored
+config_file = '/path/to/file.txt' # file | The configuration file to be stored
+if_match = 'if_match_example' # str | The If-Match header (optional)
+if_modified_since = 'if_modified_since_example' # str | The If-Match header (optional)
+if_none_match = 'if_none_match_example' # str | The If-Match header (optional)
+if_unmodified_since = 'if_unmodified_since_example' # str | The If-Match header (optional)
 
 try:
     # Store the named configuration file
-    api_instance.put_config(section_name, config_file)
+    api_instance.put_config(section_name, config_file, if_match=if_match, if_modified_since=if_modified_since, if_none_match=if_none_match, if_unmodified_since=if_unmodified_since)
 except ApiException as e:
     print("Exception when calling ConfigApi->put_config: %s\n" % e)
 ```
@@ -251,7 +277,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **section_name** | **str**| The name of the section for which the configuration file\\ \\ is to be stored | 
- **config_file** | [****](.md)| The configuration file to be stored | 
+ **config_file** | **file**| The configuration file to be stored | 
+ **if_match** | **str**| The If-Match header | [optional] 
+ **if_modified_since** | **str**| The If-Match header | [optional] 
+ **if_none_match** | **str**| The If-Match header | [optional] 
+ **if_unmodified_since** | **str**| The If-Match header | [optional] 
 
 ### Return type
 
@@ -263,7 +293,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -311,7 +341,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -101,10 +101,6 @@ class ConfigApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
 
@@ -192,10 +188,6 @@ class ConfigApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
 
@@ -215,45 +207,55 @@ class ConfigApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_section_config(self, section_name, **kwargs):  # noqa: E501
+    def get_section_config(self, section_name, accept, **kwargs):  # noqa: E501
         """Get the named configuration file  # noqa: E501
 
         Get the configuration file stored for a given name  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_section_config(section_name, async=True)
+        >>> thread = api.get_section_config(section_name, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str section_name: The name of the section for which the configuration file\\ \\ is requested (required)
-        :return: None
+        :param str accept: The Accept header (required)
+        :param str if_match: The If-Match header
+        :param str if_modified_since: The If-Match header
+        :param str if_none_match: The If-Match header
+        :param str if_unmodified_since: The If-Match header
+        :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_section_config_with_http_info(section_name, **kwargs)  # noqa: E501
+            return self.get_section_config_with_http_info(section_name, accept, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_section_config_with_http_info(section_name, **kwargs)  # noqa: E501
+            (data) = self.get_section_config_with_http_info(section_name, accept, **kwargs)  # noqa: E501
             return data
 
-    def get_section_config_with_http_info(self, section_name, **kwargs):  # noqa: E501
+    def get_section_config_with_http_info(self, section_name, accept, **kwargs):  # noqa: E501
         """Get the named configuration file  # noqa: E501
 
         Get the configuration file stored for a given name  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_section_config_with_http_info(section_name, async=True)
+        >>> thread = api.get_section_config_with_http_info(section_name, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str section_name: The name of the section for which the configuration file\\ \\ is requested (required)
-        :return: None
+        :param str accept: The Accept header (required)
+        :param str if_match: The If-Match header
+        :param str if_modified_since: The If-Match header
+        :param str if_none_match: The If-Match header
+        :param str if_unmodified_since: The If-Match header
+        :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['section_name']  # noqa: E501
+        all_params = ['section_name', 'accept', 'if_match', 'if_modified_since', 'if_none_match', 'if_unmodified_since']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -272,6 +274,10 @@ class ConfigApi(object):
         if ('section_name' not in params or
                 params['section_name'] is None):
             raise ValueError("Missing the required parameter `section_name` when calling `get_section_config`")  # noqa: E501
+        # verify the required parameter 'accept' is set
+        if ('accept' not in params or
+                params['accept'] is None):
+            raise ValueError("Missing the required parameter `accept` when calling `get_section_config`")  # noqa: E501
 
         collection_formats = {}
 
@@ -282,6 +288,16 @@ class ConfigApi(object):
         query_params = []
 
         header_params = {}
+        if 'accept' in params:
+            header_params['Accept'] = params['accept']  # noqa: E501
+        if 'if_match' in params:
+            header_params['If-Match'] = params['if_match']  # noqa: E501
+        if 'if_modified_since' in params:
+            header_params['If-Modified-Since'] = params['if_modified_since']  # noqa: E501
+        if 'if_none_match' in params:
+            header_params['If-None-Match'] = params['if_none_match']  # noqa: E501
+        if 'if_unmodified_since' in params:
+            header_params['If-Unmodified-Since'] = params['if_unmodified_since']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -290,10 +306,6 @@ class ConfigApi(object):
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['multipart/form-data'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
@@ -306,7 +318,7 @@ class ConfigApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='file',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -314,45 +326,55 @@ class ConfigApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_url_config(self, url, **kwargs):  # noqa: E501
+    def get_url_config(self, url, accept, **kwargs):  # noqa: E501
         """Get the configuration file for a URL  # noqa: E501
 
         Get the configuration file stored for a given URL  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_url_config(url, async=True)
+        >>> thread = api.get_url_config(url, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str url: The URL for which the configuration is requested (required)
-        :return: None
+        :param str accept: The Accept header (required)
+        :param str if_match: The If-Match header
+        :param str if_modified_since: The If-Match header
+        :param str if_none_match: The If-Match header
+        :param str if_unmodified_since: The If-Match header
+        :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_url_config_with_http_info(url, **kwargs)  # noqa: E501
+            return self.get_url_config_with_http_info(url, accept, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_url_config_with_http_info(url, **kwargs)  # noqa: E501
+            (data) = self.get_url_config_with_http_info(url, accept, **kwargs)  # noqa: E501
             return data
 
-    def get_url_config_with_http_info(self, url, **kwargs):  # noqa: E501
+    def get_url_config_with_http_info(self, url, accept, **kwargs):  # noqa: E501
         """Get the configuration file for a URL  # noqa: E501
 
         Get the configuration file stored for a given URL  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_url_config_with_http_info(url, async=True)
+        >>> thread = api.get_url_config_with_http_info(url, accept, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str url: The URL for which the configuration is requested (required)
-        :return: None
+        :param str accept: The Accept header (required)
+        :param str if_match: The If-Match header
+        :param str if_modified_since: The If-Match header
+        :param str if_none_match: The If-Match header
+        :param str if_unmodified_since: The If-Match header
+        :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['url']  # noqa: E501
+        all_params = ['url', 'accept', 'if_match', 'if_modified_since', 'if_none_match', 'if_unmodified_since']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -371,6 +393,10 @@ class ConfigApi(object):
         if ('url' not in params or
                 params['url'] is None):
             raise ValueError("Missing the required parameter `url` when calling `get_url_config`")  # noqa: E501
+        # verify the required parameter 'accept' is set
+        if ('accept' not in params or
+                params['accept'] is None):
+            raise ValueError("Missing the required parameter `accept` when calling `get_url_config`")  # noqa: E501
 
         collection_formats = {}
 
@@ -381,6 +407,16 @@ class ConfigApi(object):
             query_params.append(('url', params['url']))  # noqa: E501
 
         header_params = {}
+        if 'accept' in params:
+            header_params['Accept'] = params['accept']  # noqa: E501
+        if 'if_match' in params:
+            header_params['If-Match'] = params['if_match']  # noqa: E501
+        if 'if_modified_since' in params:
+            header_params['If-Modified-Since'] = params['if_modified_since']  # noqa: E501
+        if 'if_none_match' in params:
+            header_params['If-None-Match'] = params['if_none_match']  # noqa: E501
+        if 'if_unmodified_since' in params:
+            header_params['If-Unmodified-Since'] = params['if_unmodified_since']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -389,10 +425,6 @@ class ConfigApi(object):
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['multipart/form-data'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
@@ -405,7 +437,7 @@ class ConfigApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='file',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -424,7 +456,11 @@ class ConfigApi(object):
 
         :param async bool
         :param str section_name: The name of the section for which the configuration file\\ \\ is to be stored (required)
-        :param  config_file: The configuration file to be stored (required)
+        :param file config_file: The configuration file to be stored (required)
+        :param str if_match: The If-Match header
+        :param str if_modified_since: The If-Match header
+        :param str if_none_match: The If-Match header
+        :param str if_unmodified_since: The If-Match header
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -447,13 +483,17 @@ class ConfigApi(object):
 
         :param async bool
         :param str section_name: The name of the section for which the configuration file\\ \\ is to be stored (required)
-        :param  config_file: The configuration file to be stored (required)
+        :param file config_file: The configuration file to be stored (required)
+        :param str if_match: The If-Match header
+        :param str if_modified_since: The If-Match header
+        :param str if_none_match: The If-Match header
+        :param str if_unmodified_since: The If-Match header
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['section_name', 'config_file']  # noqa: E501
+        all_params = ['section_name', 'config_file', 'if_match', 'if_modified_since', 'if_none_match', 'if_unmodified_since']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -486,20 +526,28 @@ class ConfigApi(object):
         query_params = []
 
         header_params = {}
+        if 'if_match' in params:
+            header_params['If-Match'] = params['if_match']  # noqa: E501
+        if 'if_modified_since' in params:
+            header_params['If-Modified-Since'] = params['if_modified_since']  # noqa: E501
+        if 'if_none_match' in params:
+            header_params['If-None-Match'] = params['if_none_match']  # noqa: E501
+        if 'if_unmodified_since' in params:
+            header_params['If-Unmodified-Since'] = params['if_unmodified_since']  # noqa: E501
 
         form_params = []
         local_var_files = {}
+        if 'config_file' in params:
+            local_var_files['configFile'] = params['config_file']  # noqa: E501
 
         body_params = None
-        if 'config_file' in params:
-            body_params = params['config_file']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
@@ -586,10 +634,6 @@ class ConfigApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501
 
         # Authentication setting

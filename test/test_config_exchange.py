@@ -16,7 +16,7 @@ from __future__ import absolute_import
 import unittest
 
 import lockss_configuration
-from lockss_configuration.lockss-configuration-python.config_exchange import ConfigExchange  # noqa: E501
+from lockss_configuration.models.config_exchange import ConfigExchange  # noqa: E501
 from lockss_configuration.rest import ApiException
 
 

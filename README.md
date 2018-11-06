@@ -62,7 +62,7 @@ api_instance = lockss_configuration.AusApi(lockss_configuration.ApiClient(config
 auid = 'auid_example' # str | The identifier of the AU for which the configuration is\\ \\ to be deleted
 
 try:
-    # Delete the the configuration of an AU
+    # Delete the configuration of an AU
     api_response = api_instance.delete_au_config(auid)
     pprint(api_response)
 except ApiException as e:
@@ -76,7 +76,7 @@ All URIs are relative to *https://laaws.lockss.org:443*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AusApi* | [**delete_au_config**](docs/AusApi.md#delete_au_config) | **DELETE** /aus/{auid} | Delete the the configuration of an AU
+*AusApi* | [**delete_au_config**](docs/AusApi.md#delete_au_config) | **DELETE** /aus/{auid} | Delete the configuration of an AU
 *AusApi* | [**get_all_au_config**](docs/AusApi.md#get_all_au_config) | **GET** /aus | Get the configurations of all AUs
 *AusApi* | [**get_au_config**](docs/AusApi.md#get_au_config) | **GET** /aus/{auid} | Get the configuration of an AU
 *AusApi* | [**put_au_config**](docs/AusApi.md#put_au_config) | **PUT** /aus/{auid} | Store the configuration of an AU
@@ -93,7 +93,6 @@ Class | Method | HTTP request | Description
 
  - [ApiStatus](docs/ApiStatus.md)
  - [ConfigExchange](docs/ConfigExchange.md)
- - [ConfigModSpec](docs/ConfigModSpec.md)
 
 
 ## Documentation For Authorization
